@@ -22,6 +22,8 @@ html(lang='en')
       .progress-bar(role='progressbar') 
     input#duration.pull-right(type='text', placeholder="Duration of animation")
     button#go.pull-right(type='button') Go!
+    #intro
+      p Date of capture of the hashtag : #{new Date(current.time).toUTCString()}
     #wait
     #map
     input#duration(type='text')

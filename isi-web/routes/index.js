@@ -36,6 +36,10 @@ router.get('/', function(req, res, next) {
     }
 });
 
+router.get('/refresh', function(req, res, next) {
+    init(res);
+});
+
 router.get('/:hashtag', function(req, res, next) {
     if (hashtags.indexOf(req.params.hashtag) == -1) {
         res.render('error', {
@@ -53,8 +57,13 @@ router.get('/:hashtag', function(req, res, next) {
         }).sort({
             time: 1
         }, function(err, docs) {
-            res.render('main', {
-                tweets: docs
+            db.hashtags.find({
+                hashtag: req.params.hashtag
+            }, function(err2, res2) {
+                res.render('main', {
+                    tweets: docs,
+                    current: res2[0]
+                });
             });
         });
     }
