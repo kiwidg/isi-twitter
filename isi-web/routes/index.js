@@ -13,7 +13,6 @@ function init(resp) {
             docs.forEach(function(elem) {
                 hashtags.push(elem.hashtag);
             });
-            hashtags = ['baltimore', 'worldtradecenter'];
             if (resp != undefined) {
                 resp.render('index', {
                     title: 'Express',
